@@ -1,0 +1,3 @@
+google.com, 
+pub-8821289153785094,
+DIRECT, f08c47fec0942fa0
