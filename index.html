@@ -50,6 +50,10 @@
                     <li class="nav-item">
                         <a href="#skill" class="nav-link">Skills</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="#arv-apps" class="nav-link">Apps</a>
+                    </li>
                 </ul>
                 <div class="nav-close" id="nav-close">
                     <i class="lni lni-close"></i>
@@ -174,6 +178,30 @@ I am also good at UI/UX design and graphic design.
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="apps" id="arv-apps">
+            <div class="container">
+                <h2 class="section-title padd-15">Apps </h2>
+
+                <a href="https://play.google.com/store/apps/details?id=arvstudios.reader.ocr.hadwriting.recognizer.besttest.power.scanner.arv.special.simple.pixelread&pcampaignid=web_share">
+            <div class="applist" >
+
+              
+                    
+                        <img class="app-icon" style="border: 0px; border-radius: 10px; margin: auto ; width: 100px;" src="Pixel Read icon (google play).png";>
+                   
+                    <div class="apptext">
+                                <h2 class="appname" >Pixel Read OCR</h2>
+                                <h3 class="appdescription" style="width: 300px;">It is an OCR scanner app developed by ARVstudios,
+                                     It can effortlessly extract text from any image</h3>
+                    </div>
+                </div>
+                    
+            </div>
+        </a>
+                    
+
         </section>
     </main>
 </body>
@@ -335,7 +363,50 @@ I am also good at UI/UX design and graphic design.
         animation-timing-function: linear;
         animation-iteration-count: 1;
     }
+
+    /* applist */
+    .applist{
+        padding: 30px;
+        width: 550px;
+        background-color: white;
+        border: 0px solid white;
+        border-radius: 10px;
+        display: flex;
+        box-shadow: var(--box-shadow);
+        margin-bottom: 50px;
+    
+    }
+
+    .app-icon{
+        width:100px;
+        height: 100px;
+        border: 0px solid white;
+        border-radius: 10px;
+        position: relative;
+        
+    }
+
+    .apptext{
+        position: relative;
+        margin-left: 20px;
+    }
+
+    .appname{
+        font-size: 1.35rem;
+        font-style: var(--font-semi-bold);
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    .appdescription{
+        font-size: 0.90rem;
+        color: gray;
+        margin-left: 20px;
+        margin-top: 2px;
+    }
   
+
+
+
         /* header */
     .header{
         width: 100%;
