@@ -39,33 +39,86 @@
 
 </head>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js">
-      const navMenu = document.getElementById("nav-menu"),
-            navToggle = document.getElementById("nav-toggle"),
-            navClose = document.getElementById("nav-close");
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-        if(navToggle){
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.add("show-menu");
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+    // Nav menu toggle
+    const navMenu = document.getElementById("nav-menu"),
+        navToggle = document.getElementById("nav-toggle"),
+        navClose = document.getElementById("nav-close");
+
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.add("show-menu");
+        });
+    }
+
+    if (navClose) {
+        navClose.addEventListener('click', () => {
+            navMenu.classList.remove("show-menu");
+        });
+    }
+
+    // Hide nav menu on link click
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function linkAction() {
+        navMenu.classList.remove("show-menu");
+    }
+
+    navLinks.forEach(n => n.addEventListener('click', linkAction));
+});
+
+    // DOMContentLoaded event listener to dynamically load projects
+    document.addEventListener("DOMContentLoaded", function () {
+        const projectList = document.getElementById('project-list');
+
+        if (projectList) {
+            const projects = [
+                {
+                    title: "2d animation Video",
+                    description: "A cinematic video created using FlipAClip.",
+                    image: "assets/img/Project-Images/The-Perfect_Plane(Thumbnail).jpg", 
+                    link: "https://youtu.be/Z1D5Hzn2lLM?si=u_B5x5AGm3uwJxLc"
+                },
+                {
+                    title: "Pixel Read OCR Scanner",
+                    description: "An app for OCR text recognition using Google's ML Kit.",
+                    image: "assets/img/Project-Images/Pixel Read icon (google play).png",
+                    link: "https://play.google.com/store/apps/details?id=arvstudios.reader.ocr.hadwriting.recognizer.besttest.power.scanner.arv.special.simple.pixelread&pcampaignid=web_share"
+                },
+                {
+                    title: "The Last Descent(Blender animation)",
+                    description: "An amazing 3d Space animation made by Adarsh(ARVstudios)",
+                    image: "assets/img/Project-Images/Last-Descent.jpg",
+                    link: "https://youtu.be/4p8SRKjq0sE?si=2Wxdv9iMonoc-cSg"
+                }
+            ];
+
+            projectList.innerHTML = '';
+
+            projects.forEach((project) => {
+                const projectCard = document.createElement('div');
+                projectCard.classList.add('project-card');
+
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <a href="${project.link}" target="_blank">View Project</a>
+                `;
+
+                projectList.appendChild(projectCard);
             });
+        } else {
+            console.error("Project list container not found!");
         }
-
-        if(navClose){
-            navClose.addEventListener('click', () => {
-                navMenu.classList.remove("show-menu");
-            });
-        }
-
-        const navLinks = document.querySelector(".nav-link");
-
-        function linkAction(){
-            const navMenu = document.getElementById("nav-menu")
-            navMenu.classList.remove("show-menu")
-        }
-        navLinks.forEach(n => n.addEventListener('clickk', linkAction))
+    });
 </script>
+
 <body>
-    <!-- header  -->
+    <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container padd-15">
             <a href="#" class="nav-logo">
@@ -82,9 +135,8 @@
                     <li class="nav-item">
                         <a href="#skill" class="nav-link">Skills</a>
                     </li>
-
                     <li class="nav-item">
-                        <a href="#arv-apps" class="nav-link">Apps</a>
+                        <a href="#projects" class="nav-link">Projects</a>
                     </li>
                 </ul>
                 <div class="nav-close" id="nav-close">
@@ -99,22 +151,20 @@
         </nav>
     </header>
 
-    <!-- main  -->
+    <!-- Main Content -->
     <main class="main-content">
-        <!-- home  -->
+        <!-- Home Section -->
         <section class="home" id="home">
             <div class="container">
-                <!-- intro  -->
                 <div class="intro">
                     <img src="assets/img/avatar-1.svg" alt="ARVstudios">
-                    <!-- info -->
                     <h1>Adarsh R Vishwakarma</h1>
-                    <span >I'm a <span class="info-text">Programmer</span></span>
+                    <span>I'm a <span class="info-text">Programmer</span></span>
                     <br><span>and also the founder of ARVstudios</span>
-                        <ul class="si">
-                            <li><a href="https://discord.gg/HfR5SeatVD"><i class="lni lni-discord-alt"></i></a></li>
-                            <li><a href="#"><i class="lni lni-whatsapp"></i></a></li>
-                        </ul>
+                    <ul class="si">
+                        <li><a href="https://discord.gg/HfR5SeatVD"><i class="lni lni-discord-alt"></i></a></li>
+                        <li><a href="#"><i class="lni lni-whatsapp"></i></a></li>
+                    </ul>
                     <div>
                         <a href="https://bit.ly/ArvStudios_DevPage" class="btn btn-default">Developer page</a>
                     </div>
@@ -129,66 +179,62 @@
                 </div>
             </div>
         </section>
-        <!-- about  -->
+
+        <!-- About Section -->
         <section class="about section" id="about">
             <div class="container">
-                <!-- section title  -->
                 <h2 class="section-title padd-15">About me</h2>
                 <div class="row">
                     <div class="about-img padd-15">
-                        <img src="assets/img/adarsh-r-vishwakarma-profile-pic.png" alt="adarsh-r-vishwakarma-profile-pic">
+                        <img src="assets/img/adarsh-r-vishwakarma-profile-pic.png" alt="Adarsh R Vishwakarma">
                     </div>
                     <div class="about-content padd-15">
                         <div class="rounded">
                             <div class="row">
                                 <div class="about-text padd-15">
-                                    <!-- about text  -->
                                     <p>I am Adarsh R Vishwakarma, a programmer from India.<br> 
-Born on November 24, 2007, I am currently a student at Rajeshwar Convent Higher Secondary School.<br> 
-I possess extensive experience in website/app design and building, customization,<br> 
-as well as proficiency in UI/UX design and graphic design.
+                                    Born on November 24, 2007, I am currently a student at Rajeshwar Convent Higher Secondary School.<br> 
+                                    I possess extensive experience in website/app design and building, customization,<br> 
+                                    as well as proficiency in UI/UX design and graphic design.
                                     </p>
                                 </div>
                                 <div class="skills padd-15">
-                                       <div class="row">
-                                        <!-- skill-item -->
-                                            <div class="skill-item">
-                                                <h4>Development</h4>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 95%;background: rgb(255, 209, 92);"></div>
-                                                    <div class="skill-percent">95%</div>
-                                                </div>
+                                    <div class="row">
+                                        <div class="skill-item">
+                                            <h4>Development</h4>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 95%;background: rgb(255, 209, 92);"></div>
+                                                <div class="skill-percent">95%</div>
                                             </div>
-                                            <div class="skill-item">
-                                                <h4>Graphic design</h4>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 82%;background: rgb(255, 76, 96);"></div>
-                                                    <div class="skill-percent">82%</div>
-                                                </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <h4>Graphic design</h4>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 82%;background: rgb(255, 76, 96);"></div>
+                                                <div class="skill-percent">82%</div>
                                             </div>
-                                            <div class="skill-item">
-                                                <h4>UI/UX design</h4>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 95%;background: rgb(108, 108, 229);"></div>
-                                                    <div class="skill-percent">95%</div>
-                                                </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <h4>UI/UX design</h4>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 95%;background: rgb(108, 108, 229);"></div>
+                                                <div class="skill-percent">95%</div>
                                             </div>
-                                       </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              
             </div>
         </section>
-        <!-- skills -->
+
+        <!-- Skills Section -->
         <section class="services section" id="skill">
             <div class="container">
-                <!-- section titile -->
                 <h2 class="section-title padd-15">Skills</h2>
                 <div class="row">
-                    <!-- services item  -->
                     <div class="service-item padd-15">
                         <div class="service-item-inner" style="background: rgb(108,108,229);">
                             <img src="assets/img/service-1.svg" alt="">
@@ -213,31 +259,23 @@ as well as proficiency in UI/UX design and graphic design.
             </div>
         </section>
 
-        <section class="apps" id="arv-apps">
+        <!-- Projects Section -->
+        <section class="services section" id="projects">
             <div class="container">
-                <h2 class="section-title padd-15">Apps </h2>
-
-                <a href="https://play.google.com/store/apps/details?id=arvstudios.reader.ocr.hadwriting.recognizer.besttest.power.scanner.arv.special.simple.pixelread&pcampaignid=web_share">
-            <div class="applist" >
-
-              
-                    
-                        <img class="app-icon" style="border: 0px; border-radius: 10px; margin: auto ; width: 100px;" src="Pixel Read icon (google play).png";>
-                   
-                    <div class="apptext">
-                                <h2 class="appname" >Pixel Read OCR</h2>
-                                <h3 class="appdescription" style="width: 300px;">It is an OCR scanner app developed by ARVstudios,
-                                     It can effortlessly extract text from any image<br>Download Now from the Google PLay store</h3>
-                    </div>
-                </div>
-                    
+                <h2 class="section-title padd-15">Projects</h2>
+                <div id="project-list"></div>
             </div>
-        </a>
-                    
-
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 ARVstudios. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
+
 <style>
         /*=============== GOOGLE FONTS ===============*/
  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@500&family=Roboto:wght@700&family=Rubik:wght@400;500;600;700&display=swap');
@@ -321,7 +359,120 @@ as well as proficiency in UI/UX design and graphic design.
         height: auto;
         vertical-align: middle;
     }
+    
 
+ /* Main Footer */
+.main-footer {
+    background: linear-gradient(135deg, #4c4c4c, #2c2c2c); /* Elegant gradient for depth */
+    color: #f3f3f3; /* Light gray text for contrast */
+    padding: 40px 0; /* Increase padding for a more spacious feel */
+    text-align: center;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+    border-top: 2px solid #f3f3f3; /* Light border to add separation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+    font-family: 'Roboto', sans-serif; /* Modern font for a clean look */
+}
+
+/* Footer Text */
+.main-footer p {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Hover effect for footer text */
+.main-footer p:hover {
+    color: #ff7f50; /* Subtle accent color for hover effect */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Hide scrollbar but allow scrolling */
+#project-list {
+    display: flex;
+    gap: 20px; /* Space between the cards */
+    padding: 30px 0; /* Add some padding to the container */
+    justify-content: flex-start; /* Align cards to the start */
+    overflow-x: scroll; /* Allow horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+    scroll-snap-type: x mandatory; /* For smooth snapping of the cards */
+    white-space: nowrap; /* Prevent items from wrapping */
+    width: 100%; /* Make sure the container takes full width */
+}
+
+/* Hide scrollbar in Webkit browsers (Chrome, Safari, etc.) */
+#project-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* For Firefox */
+#project-list {
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+/* Projects cards */
+.project-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    width: 100%;
+    flex-grow: 1; /* Allow the cards to grow */
+    position: relative;
+    transform: scale(1);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card h3 {
+    margin: 15px 0 10px;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    font-weight: var(--font-semi-bold);
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: var(--color-gray);
+    padding: 0 1rem;
+    margin-bottom: 15px;
+}
+
+.project-card a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-card a:hover {
+    background-color: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* end of project cards */
     ul{
         list-style: none;
     }
@@ -397,48 +548,6 @@ as well as proficiency in UI/UX design and graphic design.
         animation-timing-function: linear;
         animation-iteration-count: 1;
     }
-
-    /* applist */
-    .applist{
-        padding: 30px;
-        width: 550px;
-        background-color: white;
-        border: 0px solid white;
-        border-radius: 10px;
-        display: flex;
-        box-shadow: var(--box-shadow);
-        margin-bottom: 50px;
-    
-    }
-
-    .app-icon{
-        width:100px;
-        height: 100px;
-        border: 0px solid white;
-        border-radius: 10px;
-        position: relative;
-        
-    }
-
-    .apptext{
-        position: relative;
-        margin-left: 20px;
-    }
-
-    .appname{
-        font-size: 1.35rem;
-        font-style: var(--font-semi-bold);
-        margin-top: 10px;
-        margin-left: 20px;
-    }
-    .appdescription{
-        font-size: 0.90rem;
-        color: gray;
-        margin-left: 20px;
-        margin-top: 2px;
-    }
-  
-
 
 
         /* header */
@@ -694,12 +803,6 @@ as well as proficiency in UI/UX design and graphic design.
     }  
 
 
-
-
-
-
-
-
     /* media queries */
     
     @media only screen and (max-width:1200px)
@@ -780,6 +883,40 @@ as well as proficiency in UI/UX design and graphic design.
       .about-content .about-text{
         margin-bottom: var(--m-1-5);
       }
+      .project-card {
+        max-width: 95%; /* Allow cards to be smaller on mobile */
+    }
+    .main-footer {
+        padding: 30px 15px; /* Reduce padding for smaller screens */
+    }
+
+
+    #project-list {
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: scroll; /* Enable horizontal scroll */
+    }
+
+    .project-card {
+        flex-shrink: 0; /* Prevent cards from shrinking */
+    }
+
+    /* Projects cards */
+.project-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    width: 100%;
+    flex-grow: 1; /* Allow the cards to grow */
+    position: relative;
+    transform: scale(1);
+    scroll-snap-align: start; /* Align each card at the start */
+}
+
+
     }
     @media only screen and (max-width:576px)
     {
